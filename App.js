@@ -1,20 +1,63 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from "react";
+import Login from "./Screens/Login/Login";
+import Store from "./Store/store";
+import { Provider } from "react-redux";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import DrawerNavigation from "./DrawerNav/DrawerNavigation";
+import Register from "./Screens/Register/Register";
+import NetInfo from "@react-native-community/netinfo";
+import NoInternet from "./Screens/NoInternet/NoInternet";
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+const App = () => {
+  const [internet, setInternet] = useState(null);
+  useEffect(() => {
+    NetInfo.fetch().then((state) => {
+      setInternet(state.isConnected);
+    });
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      {internet ? (
+        <NavigationContainer>
+          <Provider store={Store}>
+            <Stack.Navigator initialRouteName="login">
+              <Stack.Screen
+                name="login"
+                options={{
+                  headerShadowVisible: false,
+                  headerTitle: "",
+                }}
+                component={Login}
+              />
+              <Stack.Screen
+                name="home"
+                options={{
+                  headerShown: false,
+                  headerShadowVisible: false,
+                  headerTitle: "",
+                }}
+                component={DrawerNavigation}
+              />
+              <Stack.Screen
+                name="register"
+                options={{
+                  headerShadowVisible: false,
+                  headerTitle: "",
+                }}
+                component={Register}
+              />
+            </Stack.Navigator>
+          </Provider>
+        </NavigationContainer>
+      ) : (
+        <NoInternet />
+      )}
+    </>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
