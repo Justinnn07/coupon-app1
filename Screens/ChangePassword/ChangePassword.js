@@ -36,8 +36,7 @@ const ChangePassword = () => {
       setPassword("");
       setConfPassword("");
     } else {
-      placeholderTextColor = "black";
-      alert("Password's do not match!");
+      alert("Incorrect Password!");
     }
   };
 

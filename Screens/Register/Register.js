@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, Image, Pressable } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import mail from "../../icons/1x/mail.png";
@@ -17,6 +17,12 @@ const Register = ({ navigation }) => {
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      setLoading(false);
+    };
+  }, []);
 
   if (loading) {
     return <Spinner textContent="Loading.." visible={loading} />;

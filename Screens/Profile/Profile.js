@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, Image, Pressable, Picker } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
+import Spinner from "react-native-loading-spinner-overlay";
 import { useSelector } from "react-redux";
 import person from "../../icons/person.png";
 
@@ -15,6 +16,12 @@ const Profile = () => {
   const [city, setCity] = useState(state?.user?.city || state?.city);
   const [loading, setLoading] = useState(false);
   const token = useSelector((state) => state.token);
+
+  useEffect(() => {
+    return () => {
+      setLoading(false);
+    };
+  }, []);
 
   const update = () => {
     setLoading(true);
@@ -51,7 +58,7 @@ const Profile = () => {
   const states = ["Delhi", "UP", "Maharashtra", "Kerala"];
 
   if (loading) {
-    return <Spinner visible={loading} />;
+    return <Spinner textContent="Loading..." visible={loading} />;
   }
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "white" }}>
