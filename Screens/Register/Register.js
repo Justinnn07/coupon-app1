@@ -48,9 +48,10 @@ const Register = ({ navigation }) => {
           setName("");
           setPhone("");
         } else {
-          alert("Something went wrong, Please try again!");
+          alert(res.data.message || res.data.error);
         }
       })
+
       .finally(() => setLoading(false));
   };
 

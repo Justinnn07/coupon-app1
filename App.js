@@ -8,6 +8,7 @@ import DrawerNavigation from "./DrawerNav/DrawerNavigation";
 import Register from "./Screens/Register/Register";
 import NetInfo from "@react-native-community/netinfo";
 import NoInternet from "./Screens/NoInternet/NoInternet";
+import ForgotPassword from "./Screens/ForgotPassword/ForgotPassword";
 
 const Stack = createNativeStackNavigator();
 
@@ -49,6 +50,14 @@ const App = () => {
                   headerTitle: "",
                 }}
                 component={Register}
+              />
+              <Stack.Screen
+                name="forgotpassword"
+                options={{
+                  headerShadowVisible: false,
+                  headerTitle: "",
+                }}
+                component={ForgotPassword}
               />
             </Stack.Navigator>
           </Provider>

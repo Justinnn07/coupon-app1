@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, ScrollView } from "react-native";
+import { Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const TopHotels = ({ uri, onPress }) => {

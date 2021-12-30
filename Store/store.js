@@ -1,4 +1,3 @@
-import Spinner from "react-native-loading-spinner-overlay";
 import { createStore } from "redux";
 
 const initialState = {

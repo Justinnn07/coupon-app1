@@ -7,6 +7,7 @@ import lightblue from "../icons/lighblue.png";
 import gift from "../icons/gift.png";
 import salon from "../icons/salon.png";
 import yellow from "../icons/yellow.png";
+
 const MenuData = [
   {
     title: "Resturant",

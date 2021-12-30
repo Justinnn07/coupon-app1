@@ -27,16 +27,19 @@ const ChangePassword = () => {
           }
         )
         .then((res) => {
-          console.log(res.data);
+          console.log(res.data.message);
           if (res.data.name) {
-            alert("Password Changed Successfully");
+            alert(res.data.message);
+          } else {
+            alert(res.data.message);
           }
         })
+        .catch((err) => alert(err.message))
         .finally(() => setLoading(false));
       setPassword("");
       setConfPassword("");
     } else {
-      alert("Incorrect Password!");
+      alert("Password's do not match!");
     }
   };
 
@@ -72,7 +75,6 @@ const ChangePassword = () => {
             placeholderTextColor="black"
             style={{
               backgroundColor: "lightgray",
-
               borderRadius: 10,
               padding: 10,
             }}

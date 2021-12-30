@@ -1,6 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  Pressable,
+  Touchable,
+  TouchableOpacity,
+} from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import appLogo from "../../icons/app-lo.png";
@@ -134,9 +141,15 @@ const Login = ({ navigation }) => {
           >
             <Text style={{ color: "white", fontWeight: "bold" }}>LOG IN</Text>
           </Pressable>
-          <Text style={{ padding: 10, textAlign: "center", fontWeight: "600" }}>
-            Forgot Password?
-          </Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("forgotpassword")}
+          >
+            <Text
+              style={{ padding: 10, textAlign: "center", fontWeight: "600" }}
+            >
+              Forgot Password?
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
       <View style={{ alignItems: "center" }}>

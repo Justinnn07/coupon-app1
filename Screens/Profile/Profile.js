@@ -19,7 +19,7 @@ const Profile = () => {
 
   useEffect(() => {
     return () => {
-      setLoading(false);
+      setLoading(falser);
     };
   }, []);
 
@@ -43,15 +43,12 @@ const Profile = () => {
       .then((res) => {
         if (res.data.name) {
           setLoading(false);
-          alert("SUCCESSFULLY UPDATED!");
-        } else {
-          setLoading(false);
-          alert("SOMETHING WENT WRONG!");
+          alert(res.data.message);
         }
       })
-      .catch(() => {
+      .catch((err) => {
         setLoading(false);
-        alert("SOMETHING WENT WRONG!");
+        alert(err.message);
       });
   };
 
