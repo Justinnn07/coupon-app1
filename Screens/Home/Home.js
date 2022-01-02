@@ -42,6 +42,7 @@ const Home = ({ navigation }) => {
             type: "SET_LOCATION",
             location: res.data.data[0],
           });
+          console.log(res.data.data[0]);
         })
         .finally(() => setLoading(false));
     }
@@ -83,7 +84,7 @@ const Home = ({ navigation }) => {
             color: "red",
           }}
         >
-          Location: {location?.label}
+          Location: {location?.county}, {location?.country}
         </Text>
       ) : (
         <TouchableOpacity onPress={getLocation}>
