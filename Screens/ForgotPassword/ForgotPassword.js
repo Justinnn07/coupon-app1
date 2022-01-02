@@ -1,18 +1,28 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { View, Text, TextInput, Button } from "react-native";
+import Spinner from "react-native-loading-spinner-overlay";
 
 const ForgotPassword = () => {
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
+
   const sendMail = async () => {
+    setLoading(true);
     await axios
       .put("https://coupon-solicits-1.herokuapp.com/users/forgotPassword", {
         email: email,
       })
-      .then((res) => console.log(res.data));
-
+      .then((res) => {
+        alert(res.data.message || res.data.error);
+      })
+      .finally(() => setLoading(false));
     setEmail("");
   };
+
+  if (loading) {
+    return <Spinner visible={loading} textContent="Loading..." />;
+  }
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <View style={{ alignItems: "center" }}>
@@ -22,7 +32,7 @@ const ForgotPassword = () => {
         <TextInput
           placeholder="Type Your email"
           value={email}
-          onChange={(e) => setEmail(e)}
+          onChangeText={(e) => setEmail(e)}
         />
         <Button title="Send" onPress={sendMail} />
       </View>

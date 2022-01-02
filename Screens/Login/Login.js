@@ -27,6 +27,7 @@ const Login = ({ navigation }) => {
       setLoading(false);
     };
   }, []);
+
   // Loading logged in user.. if exist
   const getPrev = async () => {
     const token = await AsyncStorage.getItem("token");

@@ -5,11 +5,9 @@ import owl from "../../icons/1x/owl.png";
 export default class NoInternet extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       lastRefresh: Date(Date.now()).toString(),
     };
-
     this.refreshScreen = this.refreshScreen.bind(this);
   }
 

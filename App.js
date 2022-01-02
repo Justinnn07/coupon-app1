@@ -14,10 +14,14 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   const [internet, setInternet] = useState(null);
-  useEffect(() => {
-    NetInfo.fetch().then((state) => {
+
+  const fetchInternet = async () => {
+    await NetInfo.fetch().then((state) => {
       setInternet(state.isConnected);
     });
+  };
+  useEffect(() => {
+    fetchInternet();
   }, []);
 
   return (
