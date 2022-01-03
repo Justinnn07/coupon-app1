@@ -10,11 +10,17 @@ import gmail from "../../icons/1x/gmail.png";
 import clip from "../../icons/1x/clip.png";
 import share from "../../icons/1x/share.png";
 import invite from "../../icons/1x/invite.png";
+import { useSelector } from "react-redux";
+
 const ReferAFriend = () => {
+  const state = useSelector((state) => state.user);
+
+  console.log(state);
+
   const onShare = async () => {
     try {
       const result = await Share.share({
-        message: "HEY, JOIN MY APP TO GET FREE COUPONS",
+        message: `HEY, JOIN MY APP TO GET FREE COUPONS ${state.coupon_code}`,
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {

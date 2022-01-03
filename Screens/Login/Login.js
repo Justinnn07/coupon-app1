@@ -1,13 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  Image,
-  Pressable,
-  Touchable,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import appLogo from "../../icons/app-lo.png";
@@ -57,7 +50,6 @@ const Login = ({ navigation }) => {
         .catch((err) => {
           alert("Something went wrong!");
         })
-
         .finally(() => setLoading(false));
     }
   };
@@ -73,6 +65,7 @@ const Login = ({ navigation }) => {
         })
         .then((res) => {
           if (res.data.user) {
+            console.log(res.data);
             dispatch({
               type: "SET_TOKEN",
               token: res.data.token,
@@ -130,7 +123,7 @@ const Login = ({ navigation }) => {
             onChangeText={(e) => setPassword(e)}
           />
 
-          <Pressable
+          <TouchableOpacity
             style={{
               padding: 10,
               alignItems: "center",
@@ -141,7 +134,7 @@ const Login = ({ navigation }) => {
             onPress={login}
           >
             <Text style={{ color: "white", fontWeight: "bold" }}>LOG IN</Text>
-          </Pressable>
+          </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigation.navigate("forgotpassword")}
           >
@@ -155,7 +148,7 @@ const Login = ({ navigation }) => {
       </View>
       <View style={{ alignItems: "center" }}>
         <Text>Don't have an account?</Text>
-        <Pressable
+        <TouchableOpacity
           style={{
             padding: 10,
             alignItems: "center",
@@ -167,7 +160,7 @@ const Login = ({ navigation }) => {
           onPress={() => navigation.navigate("register")}
         >
           <Text style={{ color: "white", fontWeight: "bold" }}>Sign Up</Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );

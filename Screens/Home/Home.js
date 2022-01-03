@@ -66,6 +66,9 @@ const Home = ({ navigation }) => {
         },
       })
       .then((res) => setAdvert(res.data));
+    return () => {
+      setLoading(false);
+    };
   }, []);
 
   if (loading) {

@@ -40,6 +40,7 @@ const Register = ({ navigation }) => {
         city: "",
       })
       .then((res) => {
+        console.log(res.data);
         if (res.data.message === "Successfully registered!") {
           alert(res.data.message);
           navigation.replace("login");
@@ -51,7 +52,6 @@ const Register = ({ navigation }) => {
           alert(res.data.message || res.data.error);
         }
       })
-
       .finally(() => setLoading(false));
   };
 
