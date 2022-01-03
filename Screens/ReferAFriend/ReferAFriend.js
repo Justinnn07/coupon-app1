@@ -13,7 +13,7 @@ import invite from "../../icons/1x/invite.png";
 import { useSelector } from "react-redux";
 
 const ReferAFriend = () => {
-  const state = useSelector((state) => state);
+  const state = useSelector((state) => state.couponcode);
   console.log(state);
   const onShare = async () => {
     try {

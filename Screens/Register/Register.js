@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Image } from "react-native";
-import {
-  ScrollView,
-  TextInput,
-  TouchableOpacity,
-} from "react-native-gesture-handler";
+import { View, Text, Image, Pressable } from "react-native";
+import { ScrollView, TextInput } from "react-native-gesture-handler";
 import mail from "../../icons/1x/mail.png";
 import lock from "../../icons/1x/lock.png";
 import confirm from "../../icons/1x/password.png";
@@ -219,7 +215,7 @@ const Register = ({ navigation }) => {
           />
         </View>
         <View style={{ alignItems: "center" }}>
-          <TouchableOpacity
+          <Pressable
             style={{
               marginTop: 20,
               padding: 10,
@@ -234,7 +230,7 @@ const Register = ({ navigation }) => {
             <Text style={{ color: "white", textAlign: "center" }}>
               Register
             </Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </ScrollView>
     </View>

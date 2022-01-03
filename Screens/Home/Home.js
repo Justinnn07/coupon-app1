@@ -37,6 +37,7 @@ const Home = ({ navigation }) => {
         .get(
           `http://api.positionstack.com/v1/reverse?access_key=54f2785ab5306a340f186cf23cd00556&query=${location.coords.latitude},${location.coords.longitude}`
         )
+
         .then((res) => {
           dispatch({
             type: "SET_LOCATION",
