@@ -13,14 +13,12 @@ import invite from "../../icons/1x/invite.png";
 import { useSelector } from "react-redux";
 
 const ReferAFriend = () => {
-  const state = useSelector((state) => state.user);
-
+  const state = useSelector((state) => state);
   console.log(state);
-
   const onShare = async () => {
     try {
       const result = await Share.share({
-        message: `HEY, JOIN MY APP TO GET FREE COUPONS ${state.coupon_code}`,
+        message: `HEY, JOIN MY APP TO GET FREE COUPONS ${state}`,
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {

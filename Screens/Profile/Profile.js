@@ -1,7 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, Pressable, Picker } from "react-native";
-import { ScrollView, TextInput } from "react-native-gesture-handler";
+import { View, Text, Image, Picker } from "react-native";
+import {
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
+} from "react-native-gesture-handler";
 import Spinner from "react-native-loading-spinner-overlay";
 import { useSelector } from "react-redux";
 import person from "../../icons/person.png";
@@ -19,7 +23,7 @@ const Profile = () => {
 
   useEffect(() => {
     return () => {
-      setLoading(falser);
+      setLoading(false);
     };
   }, []);
 
@@ -138,7 +142,7 @@ const Profile = () => {
           />
         </View>
         <View style={{ alignItems: "center", marginTop: 20 }}>
-          <Pressable
+          <TouchableOpacity
             style={{
               backgroundColor: "#00D100",
               padding: 15,
@@ -157,7 +161,7 @@ const Profile = () => {
             >
               Update
             </Text>
-          </Pressable>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>

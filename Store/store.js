@@ -5,6 +5,7 @@ const initialState = {
   location: {},
   token: "",
   internet: null,
+  couponcode: "",
 };
 
 const store = (state = initialState, action) => {
@@ -33,6 +34,11 @@ const store = (state = initialState, action) => {
       return {
         ...state,
         loading: state.loading,
+      };
+    case "SET_COUPONCODE":
+      return {
+        ...state,
+        couponcode: state.couponcode,
       };
     default:
       return state;

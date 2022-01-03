@@ -39,6 +39,10 @@ const Login = ({ navigation }) => {
         .then((res) => {
           if (res.data.name) {
             dispatch({
+              type: "SET_COUPONCODE",
+              couponcode: res.data.coupon_code,
+            });
+            dispatch({
               type: "SET_USER",
               user: res.data,
             });
@@ -65,6 +69,10 @@ const Login = ({ navigation }) => {
         })
         .then((res) => {
           if (res.data.user) {
+            dispatch({
+              type: "SET_COUPONCODE",
+              couponcode: res.data.coupon_code,
+            });
             console.log(res.data);
             dispatch({
               type: "SET_TOKEN",
