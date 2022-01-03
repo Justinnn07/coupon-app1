@@ -20,6 +20,7 @@ const App = () => {
       setInternet(state.isConnected);
     });
   };
+
   useEffect(() => {
     fetchInternet();
   }, []);
