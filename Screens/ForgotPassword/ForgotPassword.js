@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { View, Text, TextInput, Button } from "react-native";
 import Spinner from "react-native-loading-spinner-overlay";
+import config from "../../config/config";
 
 const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
@@ -10,7 +11,7 @@ const ForgotPassword = () => {
   const sendMail = async () => {
     setLoading(true);
     await axios
-      .put("https://coupon-solicits-1.herokuapp.com/users/forgotPassword", {
+      .put(config.forgotPassword_url, {
         email: email,
       })
       .then((res) => {

@@ -6,6 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import appLogo from "../../icons/app-lo.png";
 import Spinner from "react-native-loading-spinner-overlay";
 import { useDispatch } from "react-redux";
+import config from "../../config/config";
 
 const Login = ({ navigation }) => {
   // states..
@@ -63,7 +64,7 @@ const Login = ({ navigation }) => {
     if (email && password) {
       setLoading(true);
       await axios
-        .post("https://coupon-solicits-1.herokuapp.com/users/login", {
+        .post(config.login_url, {
           email: email,
           password: password,
         })

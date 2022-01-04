@@ -16,6 +16,7 @@ import { useSelector } from "react-redux";
 import Spinner from "react-native-loading-spinner-overlay";
 import TopHotels from "../../components/TopHotels";
 import BestOffers from "../../components/BestOffers";
+import config from "../../config/config";
 
 const Home = ({ navigation }) => {
   const [hotel, setHotel] = useState([]);
@@ -35,7 +36,8 @@ const Home = ({ navigation }) => {
     if (location) {
       await axios
         .get(
-          `http://api.positionstack.com/v1/reverse?access_key=54f2785ab5306a340f186cf23cd00556&query=${location.coords.latitude},${location.coords.longitude}`
+          config.locationApi_url +
+            `${location.coords.latitude},${location.coords.longitude}`
         )
         .then((res) => {
           dispatch({
@@ -49,7 +51,7 @@ const Home = ({ navigation }) => {
 
   useEffect(() => {
     axios
-      .get("https://coupon-solicits-1.herokuapp.com/users/hotels", {
+      .get(config.hotel_url, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -59,7 +61,7 @@ const Home = ({ navigation }) => {
       });
 
     axios
-      .get("https://coupon-solicits-1.herokuapp.com/users/advert", {
+      .get(config.advert_url, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

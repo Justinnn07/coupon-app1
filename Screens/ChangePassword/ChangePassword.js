@@ -4,6 +4,7 @@ import { View, Text, Pressable } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import Spinner from "react-native-loading-spinner-overlay";
 import { useSelector } from "react-redux";
+import config from "../../config/config";
 
 const ChangePassword = () => {
   const [password, setPassword] = useState("");
@@ -16,7 +17,7 @@ const ChangePassword = () => {
       setLoading(true);
       axios
         .patch(
-          "https://coupon-solicits-1.herokuapp.com/users/change_password",
+          config.changePassword_url,
           {
             password: password,
           },

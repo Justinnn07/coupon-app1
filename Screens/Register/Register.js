@@ -9,6 +9,7 @@ import usernames from "../../icons/1x/username.png";
 import logo from "../../icons/app-lo.png";
 import axios from "axios";
 import Spinner from "react-native-loading-spinner-overlay";
+import config from "../../config/config";
 
 const Register = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -31,7 +32,7 @@ const Register = ({ navigation }) => {
   const register = async () => {
     setLoading(true);
     await axios
-      .post("https://coupon-solicits-1.herokuapp.com/users/register", {
+      .post(config.register_url, {
         name: name,
         email: email,
         password: password,

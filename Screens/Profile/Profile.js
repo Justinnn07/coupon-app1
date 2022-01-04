@@ -8,6 +8,7 @@ import {
 } from "react-native-gesture-handler";
 import Spinner from "react-native-loading-spinner-overlay";
 import { useSelector } from "react-redux";
+import config from "../../config/config";
 import person from "../../icons/person.png";
 
 const Profile = () => {
@@ -31,7 +32,7 @@ const Profile = () => {
     setLoading(true);
     axios
       .patch(
-        "https://coupon-solicits-1.herokuapp.com/users/me",
+        config.updateProfile_url,
         {
           name: name,
           city: city,
