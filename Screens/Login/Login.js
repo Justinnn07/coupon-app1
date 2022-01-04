@@ -32,7 +32,7 @@ const Login = ({ navigation }) => {
         token: token,
       });
       axios
-        .get("https://coupon-solicits-1.herokuapp.com/users/me", {
+        .get(config.updateProfile_url, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
