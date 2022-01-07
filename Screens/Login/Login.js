@@ -9,7 +9,6 @@ import { useDispatch } from "react-redux";
 import config from "../../config/config";
 
 const Login = ({ navigation }) => {
-  // states..
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,10 +39,6 @@ const Login = ({ navigation }) => {
         .then((res) => {
           if (res.data.name) {
             dispatch({
-              type: "SET_COUPONCODE",
-              couponcode: res.data.coupon_code,
-            });
-            dispatch({
               type: "SET_USER",
               user: res.data,
             });
@@ -58,7 +53,6 @@ const Login = ({ navigation }) => {
         .finally(() => setLoading(false));
     }
   };
-
   // Login handler...
   const login = async () => {
     if (email && password) {
