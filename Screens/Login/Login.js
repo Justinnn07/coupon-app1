@@ -37,6 +37,7 @@ const Login = ({ navigation }) => {
           },
         })
         .then((res) => {
+          console.log(res.data);
           if (res.data.name) {
             dispatch({
               type: "SET_USER",
@@ -53,6 +54,7 @@ const Login = ({ navigation }) => {
         .finally(() => setLoading(false));
     }
   };
+
   // Login handler...
   const login = async () => {
     if (email && password) {
@@ -66,8 +68,9 @@ const Login = ({ navigation }) => {
           if (res.data.user) {
             dispatch({
               type: "SET_COUPONCODE",
-              couponcode: res.data.coupon_code,
+              couponcode: res.data.user.coupon_code,
             });
+
             console.log(res.data);
             dispatch({
               type: "SET_TOKEN",
