@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { View, Text, TextInput, Button, Image } from "react-native";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import Spinner from "react-native-loading-spinner-overlay";
 import config from "../../config/config";
 import appLogo from "../../icons/app-lo.png";

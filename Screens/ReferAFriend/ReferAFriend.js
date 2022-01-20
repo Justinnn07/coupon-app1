@@ -18,7 +18,7 @@ const ReferAFriend = () => {
   const onShare = async () => {
     try {
       const result = await Share.share({
-        message: `HEY, JOIN MY APP TO GET FREE COUPONS ${state}`,
+        message: `HEY, HERE's My Coupon Code - 3999XI2`,
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
