@@ -80,9 +80,7 @@ const AdvertInfo = () => {
         </TouchableOpacity>
         <TouchableOpacity onPress={() => Linking.openURL("https://google.com")}>
           <Image
-            source={{
-              uri: "https://i.pinimg.com/originals/73/59/a8/7359a8e49a6fadcc653bd947f91df724.jpg",
-            }}
+            source={require('../../icons/call.png')}
             style={{ width: 40, height: 40 }}
           />
         </TouchableOpacity>
