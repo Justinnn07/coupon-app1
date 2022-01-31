@@ -1,9 +1,11 @@
 import React from "react";
 import { View, Text, Image, Button } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-const BestOffers = ({ dishName, dishRate, dishImage }) => {
+const BestOffers = ({ dishName, dishRate, dishImage, onPress }) => {
   return (
-    <View
+    <TouchableOpacity
+    onPress={()=>onPress()}
       style={{
         padding: 20,
         backgroundColor: "lightgray",
@@ -21,8 +23,8 @@ const BestOffers = ({ dishName, dishRate, dishImage }) => {
       />
       <Text style={{ fontWeight: "bold", fontSize: 18 }}>{dishName}</Text>
       <Text>{dishRate}</Text>
-      <Button title="Shop Now" color="green" />
-    </View>
+      <Button title="View" color="green" />
+    </TouchableOpacity>
   );
 };
 

@@ -78,6 +78,14 @@ const AdvertInfo = () => {
             style={{ width: 40, height: 40 }}
           />
         </TouchableOpacity>
+        <TouchableOpacity onPress={() => Linking.openURL("https://google.com")}>
+          <Image
+            source={{
+              uri: "https://i.pinimg.com/originals/73/59/a8/7359a8e49a6fadcc653bd947f91df724.jpg",
+            }}
+            style={{ width: 40, height: 40 }}
+          />
+        </TouchableOpacity>
       </View>
       {show ? (
         <Text

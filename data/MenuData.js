@@ -15,24 +15,24 @@ const MenuData = [
     icon: resturant,
     background: blue,
   },
-  {
-    title: "Buffet",
-    subTitle: "Deals",
-    icon: buffet,
-    background: orange,
-  },
+  // {
+  //   title: "Buffet",
+  //   subTitle: "Deals",
+  //   icon: buffet,
+  //   background: orange,
+  // },
   {
     title: "Spa",
     subTitle: "Deals",
     icon: spa,
     background: lightblue,
   },
-  {
-    title: "Gift",
-    subTitle: "Deals",
-    icon: gift,
-    background: orange,
-  },
+  // {
+  //   title: "Gift",
+  //   subTitle: "Deals",
+  //   icon: gift,
+  //   background: orange,
+  // },
   {
     title: "Salon",
     subTitle: "Deals",

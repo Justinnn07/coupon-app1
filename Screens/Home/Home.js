@@ -6,6 +6,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
+  Picker,
 } from "react-native";
 import MenuData from "../../data/MenuData";
 import filter from "../../icons/edit.png";
@@ -22,6 +23,7 @@ const Home = ({ navigation }) => {
   const [hotel, setHotel] = useState([]);
   const [advert, setAdvert] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isFilter, setfilter] = useState(false);
   const location = useSelector((state) => state.location);
   const token = useSelector((state) => state.token);
   const dispatch = useDispatch();
@@ -78,6 +80,7 @@ const Home = ({ navigation }) => {
   return (
     <ScrollView style={{ backgroundColor: "white", paddingTop: 20 }}>
       {/* Menu Options */}
+     
       {location.region ? (
         <Text
           style={{
@@ -144,6 +147,44 @@ const Home = ({ navigation }) => {
         ))}
       </View>
 
+
+      {/* Food Offers */}
+      <View style={{ margin: 15,  }}>
+        {/* <Text style={{ fontWeight: "bold", fontSize: 23 }}>Advertise</Text> */}
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Text style={{ fontWeight: "bold", fontSize: 23 }}>Advertise</Text>
+          <TouchableOpacity onPress={()=>setfilter(true)}>
+            <Image
+              source={filter}
+              style={{ width: 30, height: 30, margin: 10 }}
+            />
+          </TouchableOpacity>
+        </View>
+        <ScrollView
+          horizontal={true}
+          style={{
+            marginTop: 10,
+          }}
+        >
+          {advert.map((res, index) => (
+            console.log('response of advert res', res),
+            <BestOffers
+              key={index}
+              onPress={() => navigation.navigate("advertinfo", res)}
+              dishImage={res.image}
+              dishName={res.description}
+              dishRate={res.rate}
+            />
+          ))}
+        </ScrollView>
+      </View>
+
       {/* Top Hotels */}
       <View style={{ margin: 15 }}>
         <View
@@ -154,17 +195,18 @@ const Home = ({ navigation }) => {
           }}
         >
           <Text style={{ fontWeight: "bold", fontSize: 23 }}>Top Hotels</Text>
-          <TouchableOpacity>
+          {/* <TouchableOpacity>
             <Image
               source={filter}
               style={{ width: 30, height: 30, margin: 10 }}
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
 
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <View style={{ flexDirection: "row" }}>
             {hotel?.map((res, index) => (
+              console.log('response of hotel res', res),
               <TopHotels
                 onPress={() => navigation.navigate("advertinfo", res)}
                 uri={res.hotel}
@@ -174,7 +216,7 @@ const Home = ({ navigation }) => {
           </View>
         </ScrollView>
       </View>
-      {/* Food Offers */}
+      {/* Food Offers
       <View style={{ margin: 15, marginTop: -17 }}>
         <Text style={{ fontWeight: "bold", fontSize: 23 }}>Advertise</Text>
         <ScrollView
@@ -192,7 +234,61 @@ const Home = ({ navigation }) => {
             />
           ))}
         </ScrollView>
-      </View>
+      </View> */}
+
+      {
+        isFilter?
+        <View style={{position:'absolute',height:'100%', width:'100%',backgroundColor:'rgba(0,0,0,0.2)', alignItems:'center', justifyContent:'center'}}>
+        <View style={{
+          
+          width:200,
+          height:150,
+          backgroundColor:'white',
+          borderRadius:10,
+          shadowOpacity:0.2,
+          elevation:5,
+          // alignSelf:'center',
+          
+          
+        }} >
+          {MenuData.map(({ title, subTitle, background, icon }, index) => (
+            <ScrollView key={index}>
+              <TouchableOpacity
+              onPress={()=>setfilter(false)}
+                style={{
+                  // flexDirection: "column",
+                  alignItems: "center",
+                  height:50,
+                  justifyContent:'center',
+                  borderBottomWidth:0.5
+                }}
+              >
+                {/* <ImageBackground source={background} style={{ width: 100 }}>
+                  <View
+                    style={{
+                      padding: 20,
+                    }}
+                  >
+                    <Image
+                      source={icon}
+                      style={{
+                        width: 20,
+                        height: 20,
+                        marginLeft: 20,
+                      }}
+                    />
+                  </View>
+                </ImageBackground> */}
+  
+                <Text style={{ fontWeight: "800" }}>{title}</Text>
+                {/* <Text>{subTitle}</Text> */}
+              </TouchableOpacity>
+            </ScrollView>
+          ))}
+  
+        </View></View>:null
+      }
+       
     </ScrollView>
   );
 };
